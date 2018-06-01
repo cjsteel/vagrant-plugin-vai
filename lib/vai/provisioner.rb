@@ -32,8 +32,8 @@ module VagrantPlugins
               m = @machine.env.machine(*am)
               m_ssh_info = m.ssh_info
               if !m_ssh_info.nil?
-                file.write("#{m.name} ansible_ssh_host=#{m_ssh_info[:host]} ansible_ssh_port=#{m_ssh_info[:port]} "\
-                  "ansible_ssh_private_key_file=#{m_ssh_info[:private_key_path][0]} ansible_ssh_user=#{m_ssh_info[:username]}\n")
+                file.write("#{m.name} ansible_host=#{m_ssh_info[:host]} ansible_port=#{m_ssh_info[:port]} "\
+                  "ansible_ssh_private_key_file=#{m_ssh_info[:private_key_path][0]} ansible_user=#{m_ssh_info[:username]}\n")
                 inventory_machines[m.name] = m
               else
                 @logger.error("Auto-generated inventory: Impossible to get SSH information for machine '#{m.name} (#{m.provider_name})'. This machine should be recreated.")
